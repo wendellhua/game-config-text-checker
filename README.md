@@ -81,13 +81,13 @@ ollama pull qwen3:14b-q4_K_M
 通过 AI 助手（如 Claude）直接调用 SKILL，配合知识库使用效果更佳：
 
 ```
-使用 SKILL 检查 F:\config\task.xlsx 的 TASK_CONF sheet，检查 text 列
+使用 SKILL 检查 F:\xxx\task.xlsx 的 xxx_CONF sheet，检查 text 列
 ```
 
 **结合知识库使用**：
 
 ```
-@NRC剧情对白知识库 使用 SKILL 检查 F:\config\task.xlsx 的 TASK_CONF sheet，检查 text 列
+@剧情对白知识库 使用 SKILL 检查 F:\xxx\task.xlsx 的 xxx_CONF sheet，检查 text 列
 ```
 
 > 💡 **优势**：AI 会自动从知识库中获取敏感词列表、文案规范、精灵/NPC 名称等，检查更加智能和全面。
@@ -123,7 +123,7 @@ python scripts/conf_check.py "F:\config\task.xlsx" "TASK_CONF" "text"
 使用 SKILL 检查 F:\task.xlsx 的 Sheet1 sheet，检查 对白内容 列
 
 # 配合知识库（推荐）
-@NRC剧情对白知识库 使用 SKILL 检查 F:\导出全部对话.xlsx 的 全部对话 sheet，检查 对白内容 列
+@剧情对白知识库 使用 SKILL 检查 F:\导出全部对话.xlsx 的 全部对话 sheet，检查 对白内容 列
 ```
 
 ### 命令行参数
