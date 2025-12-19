@@ -46,7 +46,7 @@
 
 ```bash
 # Fork 本仓库后克隆到本地
-git clone https://github.com/your-username/game-config-text-checker.git
+git clone https://github.com/wendellhua/game-config-text-checker.git
 cd game-config-text-checker
 
 # 添加上游仓库
@@ -370,7 +370,7 @@ def get_check_prompt(batch_data):
 
 如有问题，请通过以下方式联系：
 
-- 提交 [Issue](https://github.com/your-username/game-config-text-checker/issues)
+- 提交 [Issue](https://github.com/wendellhua/game-config-text-checker/issues)
 - 发送邮件至项目维护者
 
 ---

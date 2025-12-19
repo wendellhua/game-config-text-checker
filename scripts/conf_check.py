@@ -49,11 +49,11 @@ OUTPUT_FILE = f"{SHEET_NAME}_{TARGET_COLUMN}_Check_Report_{datetime.now().strfti
 
 def get_check_prompt(batch_data):
     """
-    构造 Prompt，要求返回严格的 JSON 格式（整合洛克王国文案规范）
+    构造 Prompt，要求返回严格的 JSON 格式（整合游戏文案规范）
     """
     data_str = json.dumps(batch_data, ensure_ascii=False, indent=2)
     
-    prompt = f"""你是洛克王国游戏文案审核专家。请严格按照以下规范检查剧情对白文本：
+    prompt = f"""你是游戏文案审核专家。请严格按照以下规范检查剧情对白文本：
 
 【必查项】
 1. 错别字（重点：的地得用法、悉悉索索→窸窸窣窣）
@@ -63,7 +63,7 @@ def get_check_prompt(batch_data):
 5. 内容合规:明确触及政治敏感、暴力色情、黄赌毒，不要过多扩展
 
 【忽略项】
-- 重复内容、非中文文本、标点符号、数字、NPC和精灵名字
+- 重复内容、非中文文本、标点符号、数字、游戏内角色名字
 
 数据:
 {data_str}

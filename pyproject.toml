@@ -68,11 +68,11 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-username/game-config-text-checker"
-Documentation = "https://github.com/your-username/game-config-text-checker#readme"
-Repository = "https://github.com/your-username/game-config-text-checker.git"
-Issues = "https://github.com/your-username/game-config-text-checker/issues"
-Changelog = "https://github.com/your-username/game-config-text-checker/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/wendellhua/game-config-text-checker"
+Documentation = "https://github.com/wendellhua/game-config-text-checker#readme"
+Repository = "https://github.com/wendellhua/game-config-text-checker.git"
+Issues = "https://github.com/wendellhua/game-config-text-checker/issues"
+Changelog = "https://github.com/wendellhua/game-config-text-checker/blob/main/CHANGELOG.md"
 
 [project.scripts]
 conf-check = "conf_check:main"

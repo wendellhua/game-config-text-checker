@@ -207,13 +207,13 @@ def get_check_prompt(batch_data):
 在使用SKILL时引用知识库：
 
 ```
-@NRC剧情对白知识库 使用SKILL检查 F:\task.xlsx 的 Sheet1 sheet，检查 text 列
+@剧情对白知识库 使用SKILL检查 F:\task.xlsx 的 Sheet1 sheet，检查 text 列
 ```
 
 AI会自动从知识库获取：
 - 敏感词列表
 - 文案规范
-- 精灵/NPC名称
+- 游戏角色名称
 - 参考数据
 
 ### 4. 批量检查多个文件
@@ -471,7 +471,7 @@ ollama serve
 
 4. **引用知识库**
    ```
-   @NRC剧情对白知识库 使用SKILL检查 ...
+   @剧情对白知识库 使用SKILL检查 ...
    ```
 
 ---

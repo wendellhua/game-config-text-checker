@@ -122,7 +122,7 @@ TARGET_COLUMN = "列名"
 - 重复内容
 - 非中文文本
 - 标点符号、数字
-- NPC 和精灵名字
+- 游戏内角色名字
 
 ---
 
@@ -133,7 +133,7 @@ TARGET_COLUMN = "列名"
 | 列名 | 说明 | 示例 |
 |------|------|------|
 | 行号 | Excel 原始行号 | 260 |
-| 配置原文 | 原始文本内容 | "你好，欢迎来到洛克王国！" |
+| 配置原文 | 原始文本内容 | "你好，欢迎来到游戏世界！" |
 | 对白id | 第一列的 ID 值 | "123" |
 | 问题说明 | 问题类型和具体描述 | "错别字：'的'应改为'地'" |
 | 修改建议 | 具体的修改建议 | "将'的'改为'地'" |
@@ -239,10 +239,10 @@ python conf_check.py "file.xlsx" "Sheet1" "text" --batch-size 15
 支持引用知识库进行检查：
 
 ```
-@NRC剧情对白知识库 使用 SKILL 检查 F:\task.xlsx 的 Sheet1 sheet，检查 text 列
+@剧情对白知识库 使用 SKILL 检查 F:\task.xlsx 的 Sheet1 sheet，检查 text 列
 ```
 
-AI 会自动从知识库中获取：敏感词列表、文案规范、精灵/NPC 名称等。
+AI 会自动从知识库中获取：敏感词列表、文案规范、游戏角色名称等。
 
 ### 4. 批量检查
 
@@ -409,4 +409,4 @@ python conf_check.py "F:\导出全部对话.xlsx" "全部对话" "对白内容"
 
 1. 📖 查看 [docs/FAQ.md](docs/FAQ.md) 常见问题
 2. 📄 检查 `llm_debug_*.txt` 调试文件
-3. 🐛 提交 [Issue](https://github.com/your-username/game-config-text-checker/issues)
+3. 🐛 提交 [Issue](https://github.com/wendellhua/game-config-text-checker/issues)
