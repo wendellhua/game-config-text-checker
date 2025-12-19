@@ -55,7 +55,7 @@ Game Config Text Checker 是一个专业的游戏配置文本审核工具，基�
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-username/game-config-text-checker.git
+git clone https://github.com/wendellhua/game-config-text-checker.git
 cd game-config-text-checker
 
 # 安装 Python 依赖
@@ -74,12 +74,32 @@ ollama pull qwen3:14b-q4_K_M
 
 ### 3. 运行检查
 
+本工具支持两种使用方式，**推荐使用 AI SKILL 调用方式**：
+
+#### 🌟 方式一：AI SKILL 调用（推荐）
+
+通过 AI 助手（如 Claude）直接调用 SKILL，配合知识库使用效果更佳：
+
+```
+使用 SKILL 检查 F:\config\task.xlsx 的 TASK_CONF sheet，检查 text 列
+```
+
+**结合知识库使用**：
+
+```
+@NRC剧情对白知识库 使用 SKILL 检查 F:\config\task.xlsx 的 TASK_CONF sheet，检查 text 列
+```
+
+> 💡 **优势**：AI 会自动从知识库中获取敏感词列表、文案规范、精灵/NPC 名称等，检查更加智能和全面。
+
+#### 方式二：命令行调用
+
 ```bash
 # 基本用法
-python conf_check.py "你的配置文件.xlsx" "Sheet名称" "列名"
+python scripts/conf_check.py "你的配置文件.xlsx" "Sheet名称" "列名"
 
 # 示例
-python conf_check.py "F:\config\task.xlsx" "TASK_CONF" "text"
+python scripts/conf_check.py "F:\config\task.xlsx" "TASK_CONF" "text"
 ```
 
 ### 4. 查看报告
@@ -90,10 +110,26 @@ python conf_check.py "F:\config\task.xlsx" "TASK_CONF" "text"
 
 ## 📖 使用方法
 
+### AI SKILL 调用语法
+
+```
+使用 SKILL 检查 <文件路径> 的 <Sheet名称> sheet，检查 <列名> 列
+```
+
+**示例**：
+
+```
+# 基本检查
+使用 SKILL 检查 F:\task.xlsx 的 Sheet1 sheet，检查 对白内容 列
+
+# 配合知识库（推荐）
+@NRC剧情对白知识库 使用 SKILL 检查 F:\导出全部对话.xlsx 的 全部对话 sheet，检查 对白内容 列
+```
+
 ### 命令行参数
 
 ```bash
-python conf_check.py <input_file> <sheet_name> <target_column> [options]
+python scripts/conf_check.py <input_file> <sheet_name> <target_column> [options]
 
 位置参数:
   input_file      Excel 配置文件路径
@@ -106,20 +142,20 @@ python conf_check.py <input_file> <sheet_name> <target_column> [options]
   --column-index  列索引，当存在多个同名列时使用
 ```
 
-### 使用示例
+### 命令行示例
 
 ```bash
 # 基本检查
-python conf_check.py "task.xlsx" "Sheet1" "对白内容"
+python scripts/conf_check.py "task.xlsx" "Sheet1" "对白内容"
 
 # 自定义批次大小
-python conf_check.py "task.xlsx" "Sheet1" "text" --batch-size 50
+python scripts/conf_check.py "task.xlsx" "Sheet1" "text" --batch-size 50
 
 # 使用其他模型
-python conf_check.py "task.xlsx" "Sheet1" "text" --model qwen3:7b
+python scripts/conf_check.py "task.xlsx" "Sheet1" "text" --model qwen3:7b
 
 # 多列匹配时指定列索引
-python conf_check.py "task.xlsx" "Sheet1" "text" --column-index 0
+python scripts/conf_check.py "task.xlsx" "Sheet1" "text" --column-index 0
 ```
 
 ---
@@ -128,16 +164,18 @@ python conf_check.py "task.xlsx" "Sheet1" "text" --column-index 0
 
 ```
 game-config-text-checker/
-├── conf_check.py           # 主程序入口
 ├── requirements.txt        # Python 依赖
 ├── LICENSE                 # MIT 许可证
-├── README.md               # 项目说明
+├── README.md               # 项目说明（本文件）
 ├── CHANGELOG.md            # 更新日志
 ├── CONTRIBUTING.md         # 贡献指南
 ├── SKILL.md                # Claude SKILL 定义
+├── pyproject.toml          # 项目配置
+├── setup.cfg               # 工具配置
+├── .gitignore              # Git 忽略规则
 │
 ├── scripts/                # 脚本目录
-│   ├── conf_check.py       # 核心检查脚本
+│   ├── conf_check.py       # 核心检查脚本 ⭐
 │   └── skill_executor.py   # SKILL 执行器
 │
 ├── config/                 # 配置目录
@@ -149,10 +187,15 @@ game-config-text-checker/
 │   ├── GPU_CONFIG.md       # GPU 配置说明
 │   └── MODEL_HEALTH_CHECK.md  # 模型健康检查
 │
+├── tests/                  # 测试目录
+│   ├── __init__.py
+│   └── test_conf_check.py  # 单元测试
+│
 ├── examples/               # 示例目录
-│   └── sample_data.xlsx    # 示例数据
+│   └── README.md           # 示例说明
 │
 └── reports/                # 报告输出目录
+    └── .gitkeep
 ```
 
 ---
@@ -161,7 +204,7 @@ game-config-text-checker/
 
 ### Ollama 配置
 
-在脚本中可以修改以下配置：
+在 `scripts/conf_check.py` 中可以修改以下配置：
 
 ```python
 # Ollama 服务地址
@@ -286,9 +329,11 @@ ollama serve
 
 详见 [CHANGELOG.md](CHANGELOG.md)
 
-### 最新版本 v2.3
+### 最新版本 v2.5
 
-- 🏥 新增模型健康度检查和自动启动功能
+- 📚 项目结构 GitHub 规范化
+- 🌟 优先推荐 AI SKILL 调用方式
+- 🏥 模型健康度检查和自动启动功能
 - ⚡ GPU 加速优化
 - 🛡️ 增强 JSON 解析容错处理
 - 📊 改进报告格式
@@ -305,8 +350,8 @@ ollama serve
 
 ## 📞 联系方式
 
-- 提交 [Issue](https://github.com/your-username/game-config-text-checker/issues) 报告问题
-- 提交 [Pull Request](https://github.com/your-username/game-config-text-checker/pulls) 贡献代码
+- 提交 [Issue](https://github.com/wendellhua/game-config-text-checker/issues) 报告问题
+- 提交 [Pull Request](https://github.com/wendellhua/game-config-text-checker/pulls) 贡献代码
 
 ---
 
