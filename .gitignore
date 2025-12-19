@@ -1,0 +1,175 @@
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ===========================
+# Virtual Environments
+# ===========================
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+Pipfile.lock
+
+# ===========================
+# IDE and Editors
+# ===========================
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Vim
+*.swp
+*.swo
+*~
+.netrwhist
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# ===========================
+# Testing and Coverage
+# ===========================
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# ===========================
+# Project Specific
+# ===========================
+# Debug files
+llm_debug_*.txt
+*.log
+
+# Output reports
+*_Check_Report_*.xlsx
+reports/*.xlsx
+!reports/.gitkeep
+
+# Database
+*.db
+*.sqlite3
+check_history.db
+
+# Test files (user data)
+test_*.xlsx
+导出*.xlsx
+
+# ===========================
+# OS Generated
+# ===========================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ===========================
+# Package and Distribution
+# ===========================
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ===========================
+# Documentation
+# ===========================
+docs/_build/
+site/
+
+# ===========================
+# Configuration (Local)
+# ===========================
+config.local.yaml
+config.local.json
+*.local.yaml
+*.local.json
+.env.local
+.env.*.local
+
+# ===========================
+# Temporary Files
+# ===========================
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# ===========================
+# Misc
+# ===========================
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Cython
+cython_debug/
+
+# PyInstaller
+*.exe

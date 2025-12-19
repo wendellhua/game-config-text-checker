@@ -1,0 +1,76 @@
+# 游戏配置文本检查配置文件
+
+# Ollama配置
+ollama:
+  url: "http://localhost:11434/api/generate"
+  api_url: "http://localhost:11434/api"
+  model: "qwen3:14b-q4_K_M"
+  
+  # 模型参数
+  options:
+    temperature: 0.1        # 低温度保证结果确定性
+    num_ctx: 8192          # 上下文窗口
+    num_gpu: 99            # 使用所有可用GPU
+    num_predict: 4096      # 最大生成长度
+    stop:                  # 停止符
+      - "\n\n\n"
+      - "【待检查数据】"
+      - "现在开始检查"
+
+# 文件配置
+file:
+  input_file: "F:\\xx.xlsx"
+  sheet_name: "XXX_CONF"
+  target_column: "XXX"
+  target_column_index: null  # null表示使用第一个匹配的列，0表示第1个，1表示第2个
+  
+  # 表头配置
+  header_rows: [0, 1, 2]  # 使用第1、2、3行作为表头
+  # 单行表头示例: header_rows: 0
+  # 多行表头示例: header_rows: [0, 1, 2]
+
+# 检查参数
+check:
+  batch_size: 30          # 每批处理行数
+  timeout: 300            # 请求超时时间（秒）
+  
+  # 输出配置
+  output:
+    dir: "reports"        # 报告输出目录
+    format: "{sheet}_{column}_Check_Report_{date}.xlsx"
+    date_format: "%Y%m%d_%H%M%S"
+
+# 检查规范
+rules:
+  # 必查项
+  required:
+    - "错别字（重点：的地得用法）"
+    - "语病（主语混乱、搭配不当、词性误用）"
+    - "成语错用"
+    - "多字/漏字"
+    - "内容合规（政治敏感、暴力色情、黄赌毒）"
+  
+  # 风格规避
+  # avoid_styles:
+  #   - "现代俗语口癖、网络流行语"
+  #   - "中国古装调性：方才、为师、老夫、丹药、俺"
+  
+  # 严禁敏感词（竞品相关）
+  # forbidden_words:
+  #   - "poke"
+  #   - "pokemon"
+  #   - "宝可梦"
+
+  
+  # 忽略项
+  ignore:
+    - "重复内容"
+    - "非中文文本"
+    - "标点符号、数字"
+    - "NPC和精灵名字"
+
+# 日志配置
+logging:
+  level: "INFO"           # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(levelname)s - %(message)s"
+  save_debug: true        # 是否保存调试文件
